@@ -41,20 +41,61 @@
             <div class="disc-selection-section">
                 <div class="card">
                     <h2>Выберите диск</h2>
-                    <div class="disc-input-group">
-                        <label for="discId">ID диска:</label>
-                        <input type="text" id="discId" placeholder="Введите ID диска из базы данных">
+                    
+                    <!-- Фильтры -->
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="brandFilter">Бренд:</label>
+                            <select id="brandFilter">
+                                <option value="">Все бренды</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="searchInput">Поиск:</label>
+                            <input type="text" id="searchInput" placeholder="Поиск по бренду или модели...">
+                        </div>
                     </div>
+
+                    <!-- Каталог дисков -->
+                    <div class="disc-catalog" id="discCatalog">
+                        <div class="catalog-loading" id="catalogLoading">
+                            <div class="loading"></div>
+                            <p>Загрузка каталога...</p>
+                        </div>
+                        <div class="discs-grid" id="discsGrid" style="display: none;">
+                            <!-- Диски будут здесь -->
+                        </div>
+                        <div class="catalog-empty" id="catalogEmpty" style="display: none;">
+                            <p>Диски не найдены</p>
+                        </div>
+                    </div>
+
+                    <!-- Пагинация -->
+                    <div class="pagination" id="pagination" style="display: none;">
+                        <button class="btn-pagination" id="prevPage" disabled>← Назад</button>
+                        <span class="page-info" id="pageInfo"></span>
+                        <button class="btn-pagination" id="nextPage" disabled>Вперед →</button>
+                    </div>
+
+                    <div class="selected-disc" id="selectedDisc" style="display: none;">
+                        <div class="selected-disc-info">
+                            <strong>Выбранный диск:</strong>
+                            <span id="selectedDiscName"></span>
+                        </div>
+                    </div>
+
                     <button class="btn-primary" id="processBtn" disabled>
                         <span class="btn-text">Применить виртуальную примерку</span>
-                        <span class="btn-loader" style="display: none;">⏳</span>
+                        <span class="btn-loader" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </span>
                     </button>
                 </div>
             </div>
 
             <div class="result-section" id="resultSection" style="display: none;">
                 <div class="card">
-                    <h2>Результат</h2>
+                    <h2>Результат виртуальной примерки</h2>
                     <div class="result-content" id="resultContent">
                         <!-- Результаты будут здесь -->
                     </div>
