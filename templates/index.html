@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel Finder - Виртуальная примерка дисков</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🚗 Wheel Finder</h1>
+                <p class="tagline">Виртуальная примерка дисков на ваш автомобиль</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="card">
+                    <h2>Загрузите фото вашего автомобиля</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                        <div class="upload-content">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p>Нажмите или перетащите изображение сюда</p>
+                            <span class="file-info">PNG, JPG до 10MB</span>
+                        </div>
+                    </div>
+                    <div class="image-preview" id="imagePreview" style="display: none;">
+                        <img id="previewImg" src="" alt="Предпросмотр">
+                        <button class="btn-remove" id="removeImage">✕</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disc-selection-section">
+                <div class="card">
+                    <h2>Выберите диск</h2>
+                    <div class="disc-input-group">
+                        <label for="discId">ID диска:</label>
+                        <input type="text" id="discId" placeholder="Введите ID диска из базы данных">
+                    </div>
+                    <button class="btn-primary" id="processBtn" disabled>
+                        <span class="btn-text">Применить виртуальную примерку</span>
+                        <span class="btn-loader" style="display: none;">⏳</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="card">
+                    <h2>Результат</h2>
+                    <div class="result-content" id="resultContent">
+                        <!-- Результаты будут здесь -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <div class="card error-card">
+                    <span class="error-icon">⚠️</span>
+                    <p id="errorText"></p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Wheel Finder. Виртуальная примерка дисков с использованием AI.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
